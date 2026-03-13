@@ -1,0 +1,85 @@
+/* Animações sutis para a landing page do Vínculo Atípico */
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Reveal on scroll - fade + translate */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover micro-interactions para cards */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-hover:hover {
+        transform: none;
+    }
+}
+
+/* Navbar scroll effect - sombra/blur sutil */
+.nav-header {
+    transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.nav-header.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero image parallax sutil */
+.hero-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    transition: transform 0.3s ease-out;
+}
+
+/* Parallax sutil no overlay ao mover mouse (apenas desktop) */
+@media (hover: hover) and (pointer: fine) {
+    .hero-image-container:hover .hero-overlay {
+        transform: scale(1.02);
+    }
+}
+
+/* Botões - transições consistentes */
+button {
+    transition: all 0.2s ease;
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .reveal--visible {
+        opacity: 1;
+        transform: none;
+    }
+}
